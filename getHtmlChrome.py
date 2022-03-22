@@ -8,7 +8,8 @@ def main():
     options.headless = True
     driver = webdriver.Chrome(options=options)
 
-    driver.get("https://www.google.com/")
+    driver.get("https://www.amazon.com")
+    print(driver.page_source)
 
     driver.quit()
 
