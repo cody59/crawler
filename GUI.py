@@ -1,10 +1,11 @@
 import tkinter as tk
 
-def window():
+def Window():
     window = tk.Tk()
-    greeting = tk.Label(text="hi")
-    greeting.pack()
+    label = tk.Label(window, text="")
+    label.pack()
+    window.mainloop()
 
 
 if __name__ == "__main__":
-    window()
+    Window()
