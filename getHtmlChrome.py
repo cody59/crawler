@@ -9,7 +9,10 @@ def main():
     driver = webdriver.Chrome(options=options)
 
     driver.get("https://www.amazon.com")
-    print(driver.page_source)
+
+    f = open(".\page_source\chrome", "wb")
+    f.write((driver.page_source).encode('ascii','ignore'))
+    f.close()
 
     driver.quit()
 
