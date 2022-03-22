@@ -1,9 +1,12 @@
 #Ver 1 of the script
-import requests
+import lxml as lxml
+import request
+from django.contrib.sites import requests
+
 
 def main():
 	userInput = raw_input("Enter the website you want to scrape (ex Amazon.com): ")
-	userInput='https://www.'+userInput
+	userInput='https://www.'+ userInput
 	print(userInput)
 
 	product = raw_input("What product would you like to search for: ")
