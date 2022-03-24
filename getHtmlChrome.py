@@ -14,7 +14,7 @@ def main():
 
     #test
     pre = driver.page_source
-    pre = driver.find_elements(by = By.TAG_NAME, value="pre").text
+    pre = driver.find_elements(by=By.TAG_NAME, value="pre").text
     data = json.loads(pre)
     print(data)
 
