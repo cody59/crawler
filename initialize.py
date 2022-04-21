@@ -8,6 +8,8 @@ def check():
 
     if os.path.isdir(".\\log") == False:
         os.mkdir(".\\log")
+    if os.path.isdir(".\\page_source") == False:
+        os.mkdir(".\\page_source")
 
     fwrite = open(".\\log\\tmp", "w")
     fwrite.write(webMan)

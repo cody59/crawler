@@ -2,6 +2,7 @@ import initialize
 initialize.check()
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.utils import ChromeType
@@ -22,7 +23,36 @@ def main():
         if user.lower() == "upgrade".lower():
             initialize.upgrade()
 
+        elif user.lower() == "chrome".lower():
+
+            getHtmlChrome()
+
+        elif user.lower() == "firefox".lower():
+
+            getHtmlFirefox()
+
+        elif user.lower() == "chromium".lower():
+
+            getHtmlChromium()
+
+        elif user.lower() == "edge".lower():
+
+            getHtmlEdge()
+
+        elif user.lower() == "ie".lower():
+
+            getHtmlIe()
+
+        elif user.lower() == "brave".lower():
+
+            getHtmlBrave()
+
+        elif user.lower() == "opera".lower():
+
+            getHtmlOpera()
+
         elif user == "exit":
+
             start = False
 
         else:
@@ -44,26 +74,26 @@ def getHtmlChrome():
 
     driver.quit()
 
-def getHtmlChromium(url):
+def getHtmlChromium():
 
     driver = webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
 
-def getHtmlEdge(url):
+def getHtmlEdge():
 
     driver = webdriver.Edge(service=Service(EdgeChromiumDriverManager().install()))
 
-def getHtmlBrave(url):
+def getHtmlBrave():
 
     driver = webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.BRAVE).install()))
 
-def getHtmlFirefox(url):
+def getHtmlFirefox():
 
     options = Options()
     options.headless = True
     driver = webdriver.Firefox(options=options, service=Service(GeckoDriverManager().install()))
     # put execution path into parenthesis to make code easily distributable
 
-    driver.get(url)
+    driver.get("view-source:https://www.amazon.com")
 
     f = open(".\page_source\\firefox", "wb")
     f.write((driver.page_source).encode('ascii', 'ignore'))
@@ -71,11 +101,11 @@ def getHtmlFirefox(url):
 
     driver.quit()
 
-def getHtmlIe(url):
+def getHtmlIe():
 
     driver = webdriver.Ie(service=Service(IEDriverManager().install()))
 
-def getHtmlOpera(url):
+def getHtmlOpera():
     driver = webdriver.Opera(executable_path=OperaDriverManager().install())
 
 if __name__ == "__main__":
