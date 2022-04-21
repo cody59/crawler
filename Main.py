@@ -1,3 +1,5 @@
+import initialize
+initialize.check()
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -8,7 +10,7 @@ from webdriver_manager.microsoft import IEDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.opera import OperaDriverManager
 import urllib, requests, json
-import initialize
+
 
 def main():
     start = True
@@ -17,14 +19,15 @@ def main():
 
         user = input("Enter a command:")
 
-        if user == "upgrade":
+        if user.lower() == "upgrade".lower():
             initialize.upgrade()
 
         elif user == "exit":
             start = False
 
         else:
-            print("\nCOMMANDS:\n\n\tchrome\n\tfirefox\n\tchromium\n\tedge\n\tie (internet explorer)\n\tbrave\n\topera\n ")
+            print("\ninvalid command\n")
+            print("COMMANDS:\n\tchrome\n\tfirefox\n\tchromium\n\tedge\n\tie (internet explorer)\n\tbrave\n\topera\n\texit\n ")
 
 
 def getHtmlChrome():
@@ -63,7 +66,7 @@ def getHtmlFirefox(url):
     driver.get(url)
 
     f = open(".\page_source\\firefox", "wb")
-    f.write((driver.page_source).encode('ascii','ignore'))
+    f.write((driver.page_source).encode('ascii', 'ignore'))
     f.close()
 
     driver.quit()

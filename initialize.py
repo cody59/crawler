@@ -6,6 +6,9 @@ def check():
     webMan = os.popen("pip show webdriver-manager").read()
     sel = os.popen("pip show selenium").read()
 
+    if os.path.isdir(".\\log") == False:
+        os.mkdir(".\\log")
+
     fwrite = open(".\\log\\tmp", "w")
     fwrite.write(webMan)
     fwrite.write("\n")
