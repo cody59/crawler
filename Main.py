@@ -1,4 +1,3 @@
-import urllib, requests, json
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -8,12 +7,27 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from webdriver_manager.microsoft import IEDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.opera import OperaDriverManager
+import urllib, requests, json
+import initialize
 
 def main():
+    start = True
 
-    print("hi")
+    while start == True:
 
-def getHtmlChrome(url):
+        user = input("Enter a command:")
+
+        if user == "upgrade":
+            initialize.upgrade()
+
+        elif user == "exit":
+            start = False
+
+        else:
+            print("\nCOMMANDS:\n\n\tchrome\n\tfirefox\n\tchromium\n\tedge\n\tie (internet explorer)\n\tbrave\n\topera\n ")
+
+
+def getHtmlChrome():
 
     options = Options()
     options.headless = True
@@ -60,3 +74,7 @@ def getHtmlIe(url):
 
 def getHtmlOpera(url):
     driver = webdriver.Opera(executable_path=OperaDriverManager().install())
+
+if __name__ == "__main__":
+
+    main()
