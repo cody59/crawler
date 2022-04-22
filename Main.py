@@ -82,6 +82,7 @@ def getHtmlChrome():
 
     driver.quit()
 
+
 def getHtmlChromium():
 
     options = chromeOptions()
@@ -96,13 +97,16 @@ def getHtmlChromium():
 
     driver.quit()
 
+
 def getHtmlEdge():
 
     driver = webdriver.Edge(service=Service(EdgeChromiumDriverManager().install()))
 
+
 def getHtmlBrave():
 
     driver = webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.BRAVE).install()))
+
 
 def getHtmlFirefox():
 
@@ -119,12 +123,15 @@ def getHtmlFirefox():
 
     driver.quit()
 
+
 def getHtmlIe():
 
     driver = webdriver.Ie(service=Service(IEDriverManager().install()))
 
+
 def getHtmlOpera():
     driver = webdriver.Opera(executable_path=OperaDriverManager().install())
+
 
 if __name__ == "__main__":
 
