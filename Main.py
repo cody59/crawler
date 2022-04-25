@@ -14,7 +14,6 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from webdriver_manager.microsoft import IEDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.opera import OperaDriverManager
-from bs4 import BeautifulSoup
 import search
 import json
 
@@ -79,10 +78,7 @@ def getHtmlChrome():
     keyword = input("Enter product: ")
     f = open(".\page_source\\chrome", "ab")
 
-    for page in range(1, 31): #in the future look for need help for amazon so you can stop at a specific page
-
-        driver.get(f"https://www.amazon.com/s?k={keyword}&page={page}")
-        f.write(driver.page_source.encode('ascii', 'ignore'))
+    amazon(driver, f, keyword)
 
     f.close()
 
@@ -95,10 +91,11 @@ def getHtmlChromium():
     options.headless = True
     driver = webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
 
-    driver.get("view-source:https://www.amazon.com")
+    keyword = input("Enter product: ")
+    f = open(".\page_source\\chromium", "ab")
 
-    f = open(".\page_source\\chromium", "wb")
-    f.write((driver.page_source).encode('ascii', 'ignore'))
+    amazon((driver, f, keyword))
+
     f.close()
 
     driver.quit()
@@ -121,10 +118,11 @@ def getHtmlFirefox():
     driver = webdriver.Firefox(options=options, service=Service(GeckoDriverManager().install()))
     # put execution path into parenthesis to make code easily distributable
 
-    driver.get("view-source:https://www.amazon.com")
+    keyword = input("Enter product: ")
+    f = open(".\page_source\\firefox", "ab")
 
-    f = open(".\page_source\\firefox", "wb")
-    f.write((driver.page_source).encode('ascii', 'ignore'))
+    amazon((driver, f, keyword))
+
     f.close()
 
     driver.quit()
@@ -137,6 +135,13 @@ def getHtmlIe():
 
 def getHtmlOpera():
     driver = webdriver.Opera(executable_path=OperaDriverManager().install())
+
+def amazon(driver, file, keyword):
+
+    for page in range(1, 31): #in the future look for need help for amazon so you can stop at a specific page
+
+        driver.get(f"https://www.amazon.com/s?k={keyword}&page={page}")
+        file.write(driver.page_source.encode('ascii', 'ignore'))
 
 
 if __name__ == "__main__":
