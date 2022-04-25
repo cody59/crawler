@@ -25,38 +25,38 @@ def main():
 
         user = input("Enter a command:")
 
-        if user.lower() == "upgrade".lower():
+        if user.lower() == "upgrade":
             initialize.upgrade()
 
-        elif user.lower() == "chrome".lower():
+        elif user.lower() == "chrome":
 
             getHtmlChrome()
 
-        elif user.lower() == "firefox".lower():
+        elif user.lower() == "firefox":
 
             getHtmlFirefox()
 
-        elif user.lower() == "chromium".lower():
+        elif user.lower() == "chromium":
 
             getHtmlChromium()
 
-        elif user.lower() == "edge".lower():
+        elif user.lower() == "edge":
 
             getHtmlEdge()
 
-        elif user.lower() == "ie".lower():
+        elif user.lower() == "ie":
 
             getHtmlIe()
 
-        elif user.lower() == "brave".lower():
+        elif user.lower() == "brave":
 
             getHtmlBrave()
 
-        elif user.lower() == "opera".lower():
+        elif user.lower() == "opera":
 
             getHtmlOpera()
 
-        elif user.lower() == "update".lower():
+        elif user.lower() == "update":
 
             initialize.upgrade()
 
@@ -75,10 +75,16 @@ def getHtmlChrome():
     options.headless = True
     driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
 
-    driver.get("view-source:https://www.amazon.com/s?k=cooking+utensils&crid=3QLGR94RSJYTW&sprefix=cooking+u%2Caps%2C95&ref=nb_sb_ss_ts-doa-p_1_9")
+    #driver.get("view-source:https://www.amazon.com/s?k=cooking+utensils&crid=3QLGR94RSJYTW&sprefix=cooking+u%2Caps%2C95&ref=nb_sb_ss_ts-doa-p_1_9")
 
-    f = open(".\page_source\\chrome", "wb")
-    f.write((driver.page_source).encode('ascii', 'ignore'))
+    keyword = input("Enter product: ")
+    f = open(".\page_source\\chrome", "ab")
+
+    for page in range(1, 31):
+        print(page)
+        driver.get(f"https://www.amazon.com/s?k={keyword}&page={page}")
+        f.write(driver.page_source.encode('ascii', 'ignore'))
+
     f.close()
 
     driver.quit()
