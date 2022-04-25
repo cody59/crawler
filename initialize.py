@@ -5,6 +5,7 @@ def check():
 
     webMan = os.popen("pip show webdriver-manager").read()
     sel = os.popen("pip show selenium").read()
+    Bs4 = os.popen("pip show Bs4").read()
 
     if os.path.isdir(".\\log") == False:
         os.mkdir(".\\log")
@@ -15,6 +16,8 @@ def check():
     fwrite.write(webMan)
     fwrite.write("\n")
     fwrite.write(sel)
+    fwrite.write("\n")
+    fwrite.write(Bs4)
     fwrite.close()
 
     fread = open(".\\log\\tmp", "r")
@@ -31,6 +34,13 @@ def check():
         installselenium()
     fread.close()
 
+    fread = open(".\\log\\tmp", "r")
+    if "bs4" in fread.read():
+        flag = 3
+    else:
+        installbs4()
+    fread.close()
+
     os.remove(".\\log\\tmp")
 
 
@@ -42,6 +52,11 @@ def installwebdriver():
 def installselenium():
 
     os.system("pip install selenium")
+
+
+def installbs4():
+
+    os.system("pip install Bs4")
 
 
 def upgrade():
