@@ -14,7 +14,8 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from webdriver_manager.microsoft import IEDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.opera import OperaDriverManager
-import urllib, requests, json
+import search
+import json
 
 def main():
 
@@ -74,7 +75,7 @@ def getHtmlChrome():
     options.headless = True
     driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
 
-    driver.get("view-source:https://www.amazon.com")
+    driver.get("view-source:https://www.amazon.com/s?k=cooking+utensils&crid=3QLGR94RSJYTW&sprefix=cooking+u%2Caps%2C95&ref=nb_sb_ss_ts-doa-p_1_9")
 
     f = open(".\page_source\\chrome", "wb")
     f.write((driver.page_source).encode('ascii', 'ignore'))
