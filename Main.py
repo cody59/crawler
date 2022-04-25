@@ -17,6 +17,7 @@ from webdriver_manager.opera import OperaDriverManager
 from bs4 import BeautifulSoup
 import search
 import json
+import os
 
 def main():
 
@@ -32,10 +33,13 @@ def main():
         elif user.lower() == "chrome":
 
             getHtmlChrome()
+            search.main(user)
+            os.remove(".\page_source\\chrome")
 
         elif user.lower() == "firefox":
 
             getHtmlFirefox()
+            search.main(user)
 
         elif user.lower() == "chromium":
 
@@ -62,7 +66,6 @@ def main():
             initialize.upgrade()
 
         elif user == "exit":
-
             start = False
 
         else:
@@ -78,7 +81,6 @@ def getHtmlChrome():
 
     keyword = input("Enter product: ")
     f = open(".\page_source\\chrome", "ab")
-
     for page in range(1, 31): #in the future look for need help for amazon so you can stop at a specific page
 
         driver.get(f"https://www.amazon.com/s?k={keyword}&page={page}")
