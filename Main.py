@@ -14,6 +14,7 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from webdriver_manager.microsoft import IEDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.opera import OperaDriverManager
+from bs4 import BeautifulSoup
 import search
 import json
 
@@ -75,13 +76,11 @@ def getHtmlChrome():
     options.headless = True
     driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
 
-    #driver.get("view-source:https://www.amazon.com/s?k=cooking+utensils&crid=3QLGR94RSJYTW&sprefix=cooking+u%2Caps%2C95&ref=nb_sb_ss_ts-doa-p_1_9")
-
     keyword = input("Enter product: ")
     f = open(".\page_source\\chrome", "ab")
 
-    for page in range(1, 31):
-        print(page)
+    for page in range(1, 31): #in the future look for need help for amazon so you can stop at a specific page
+
         driver.get(f"https://www.amazon.com/s?k={keyword}&page={page}")
         f.write(driver.page_source.encode('ascii', 'ignore'))
 
