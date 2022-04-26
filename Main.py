@@ -16,6 +16,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.opera import OperaDriverManager
 import search
 import json
+import websites
 
 def main():
 
@@ -23,7 +24,7 @@ def main():
 
     while start == True:
 
-        user = input("Enter a command:")
+        user = input("Select a Browser:")
 
         if user.lower() == "upgrade":
             initialize.upgrade()
@@ -78,7 +79,7 @@ def getHtmlChrome():
     keyword = input("Enter product: ")
     f = open(".\page_source\\chrome", "ab")
 
-    amazon(driver, f, keyword)
+    websites.amazon(driver, f, keyword)
 
     f.close()
 
@@ -94,7 +95,7 @@ def getHtmlChromium():
     keyword = input("Enter product: ")
     f = open(".\page_source\\chromium", "ab")
 
-    amazon((driver, f, keyword))
+    websites.amazon(driver, f, keyword)
 
     f.close()
 
@@ -121,7 +122,7 @@ def getHtmlFirefox():
     keyword = input("Enter product: ")
     f = open(".\page_source\\firefox", "ab")
 
-    amazon((driver, f, keyword))
+    websites.amazon(driver, f, keyword)
 
     f.close()
 
@@ -136,26 +137,6 @@ def getHtmlIe():
 def getHtmlOpera():
     driver = webdriver.Opera(executable_path=OperaDriverManager().install())
 
-def amazon(driver, file, keyword):
-
-    for page in range(1, 8): #in the future look for need help for amazon so you can stop at a specific page
-
-        driver.get(f"https://www.amazon.com/s?k={keyword}&page={page}")
-        file.write(driver.page_source.encode('ascii', 'ignore'))
-
-
-def newegg(driver, file, keyword):
-
-    for page in range(1, 8):
-
-        driver.get(f"https://www.newegg.com/p/pl?d={keyword}&page={page}")
-        file.write(driver.page_source.encode('ascii', 'ignore'))
-
-def microcenter(driver, file, keyword):
-
-    for page in range(1, 8):
-        driver.get(f"https://www.microcenter.com/search/search_results.aspx?NTX=mode+MatchPartial&NTT={keyword}&NTK=all&page={page}")
-        file.write(driver.page_source.encode('ascii', 'ignore'))
 
 if __name__ == "__main__":
 
