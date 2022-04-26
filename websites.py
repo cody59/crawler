@@ -10,9 +10,6 @@ def choose(driver, file):
         tech(driver, file, keyword)
 
 
-
-
-
 def tech(driver, file, keyword):
 
     page = 1
