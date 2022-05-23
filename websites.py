@@ -1,3 +1,5 @@
+import multiprocessing
+
 import scrapy
 from multiprocessing import Pool, cpu_count
 
@@ -10,15 +12,45 @@ def choose(driver, file):
 
         urls = tech(driver, file, keyword)
 
-        #p = Pool(cpu_count()-1)
-        #p.map(scrape, urls)
-        #p.terminate()
+        section = [urls[x:x + 4] for x in range(0, len(urls), 4)]
+        print(len(section))
+        print(section)
+
+        procs = []
+
+        for u in range(len(section)):
+
+            p = multiprocessing.Process(scrape(driver, file, section[u]))
+            p.start()
+            procs.append(p)
+
+        for proc in procs:
+
+            proc.join()
+
+
+        #p = multiprocessing.Process(scrape(driver, file, url[0]))
+        #p2 = multiprocessing.Process(scrape(driver, file, url[1]))
+        #p3 = multiprocessing.Process(scrape(driver, file, url[2]))
+        #p4 = multiprocessing.Process(scrape(driver, file, url[3]))
+
+        #p.start()
+        #p2.start()
+        #p3.start()
+        #p4.start()
+
         #p.join()
+        #p2.join()
+        #p3.join()
+        #p4.join()
 
-def scrape(urls):
-    print("C:\\Users\\blue\\.wdm\\drivers\\geckodriver\\win64\\v0.31.0")
 
-    print(urls)
+def scrape(driver, file, urls):
+
+    for i in range(len(urls)):
+        # amazon
+        driver.get(urls[i])
+        file.write(driver.page_source.encode('ascii', 'ignore'))
 
 def tech(driver, file, keyword):
 

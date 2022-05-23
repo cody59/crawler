@@ -41,7 +41,7 @@ def check():
         installscrapy()
     fread.close()
 
-    os.remove(".\\log\\tmp")
+    #os.remove(".\\log\\tmp")
 
 
 def installwebdriver():
