@@ -1,9 +1,16 @@
 from initialize import check
 from initialize import upgrade
+from tkinter import *
 import getHtml
+from GUI import GUI
 
 def main():
     check()
+
+    root = Tk()
+    root.geometry("400x400")
+    b = GUI(root)
+    root.mainloop()
 
     start = 1
 
@@ -22,10 +29,6 @@ def main():
 
             getHtml.getHtmlFirefox()
 
-        elif user.lower() == "chromium":
-
-            getHtml.getHtmlChromium()
-
         elif user.lower() == "edge":
 
             getHtml.getHtmlEdge()
@@ -33,10 +36,6 @@ def main():
         elif user.lower() == "ie":
 
             getHtml.getHtmlIe()
-
-        elif user.lower() == "brave":
-
-            getHtml.getHtmlBrave()
 
         elif user.lower() == "opera":
 
@@ -50,7 +49,3 @@ def main():
             print("\ninvalid command\n")
             print("COMMANDS:\n\tchrome\n\tfirefox\n\tchromium\n\tedge\n\tie (internet explorer)\n\tbrave\n\topera\n\tupdate\n\texit\n ")
 
-
-if __name__ == "__main__":
-
-    main()

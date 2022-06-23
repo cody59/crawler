@@ -57,24 +57,18 @@ def tech(driver, file, keyword):
     page = 1
     urls = list()
 
-    while page != 11:
+    while page != 21:
 
         #amazon
-        #driver.get(f"https://www.amazon.com/s?k={keyword}&page={page}")
-        #file.write(driver.page_source.encode('ascii', 'ignore'))
+        urls.append(f"https://www.amazon.com/s?k={keyword}&s=price-desc-rank&page={page}")
 
-        urls.append(f"https://www.amazon.com/s?k={keyword}&page={page}")
+        #ebay
+        urls.append(f"https://www.ebay.com/sch/i.html?_from=R40&_nkw={keyword}&_sacat=0&_ipg=240&_sop=15&rt=nc&LH_BIN=1&_pgn={page}")
 
         #newegg
-        #driver.get(f"https://www.newegg.com/p/pl?d={keyword}&page={page}")
-        #file.write(driver.page_source.encode('ascii', 'ignore'))
-
         urls.append(f"https://www.newegg.com/p/pl?d={keyword}&page={page}")
 
         #microcenter
-        #driver.get(f"https://www.microcenter.com/search/search_results.aspx?NTX=mode+MatchPartial&NTT={keyword}&NTK=all&page={page}")
-        #file.write(driver.page_source.encode('ascii', 'ignore'))
-
         urls.append(f"https://www.microcenter.com/search/search_results.aspx?NTX=mode+MatchPartial&NTT={keyword}&NTK=all&page={page}")
 
         page += 1

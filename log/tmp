@@ -1,12 +1,12 @@
 Name: webdriver-manager
-Version: 3.5.4
+Version: 3.7.0
 Summary: Library provides the way to automatically manage drivers for different browsers
 Home-page: https://github.com/SergeyPirogov/webdriver_manager
 Author: Sergey Pirogov
 Author-email: automationremarks@gmail.com
 License: UNKNOWN
-Location: c:\users\blue\projects\crawler-main\venv\lib\site-packages
-Requires: requests
+Location: c:\users\blue\appdata\local\programs\python\python310\lib\site-packages
+Requires: python-dotenv, requests
 Required-by: 
 
 Name: selenium
@@ -16,7 +16,7 @@ Home-page: https://www.selenium.dev
 Author: 
 Author-email: 
 License: Apache 2.0
-Location: c:\users\blue\projects\crawler-main\venv\lib\site-packages
+Location: c:\users\blue\appdata\local\programs\python\python310\lib\site-packages
 Requires: trio, trio-websocket, urllib3
 Required-by: 
 
@@ -27,6 +27,6 @@ Home-page: https://scrapy.org
 Author: Scrapy developers
 Author-email: 
 License: BSD
-Location: c:\users\blue\projects\crawler-main\venv\lib\site-packages
+Location: c:\users\blue\appdata\local\programs\python\python310\lib\site-packages
 Requires: cryptography, cssselect, itemadapter, itemloaders, lxml, parsel, protego, PyDispatcher, pyOpenSSL, queuelib, service-identity, setuptools, tldextract, Twisted, w3lib, zope.interface
 Required-by: 

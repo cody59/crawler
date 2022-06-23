@@ -7,7 +7,6 @@ from selenium.webdriver.ie.options import Options as ieOptions
 from selenium.webdriver.opera.options import Options as operaOptions
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.utils import ChromeType
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from webdriver_manager.microsoft import IEDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
@@ -33,29 +32,9 @@ def getHtmlChrome():
     driver.quit()
 
 
-def getHtmlChromium():
-
-    options = chromeOptions()
-    options.headless = True
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
-
-    f = open(".\page_source\\chromium", "ab")
-
-    choose(driver, f)
-
-    f.close()
-
-    driver.quit()
-
-
 def getHtmlEdge():
 
     driver = webdriver.Edge(service=Service(EdgeChromiumDriverManager().install()))
-
-
-def getHtmlBrave():
-
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.BRAVE).install()))
 
 
 def getHtmlFirefox():
